@@ -1,0 +1,246 @@
+# Gold Trading AI - Configuration Settings
+# ========================================
+
+# Application Settings
+application:
+  name: "Gold Trading AI"
+  version: "2.0.0"
+  debug: false
+  log_level: "INFO"
+  
+# Data Sources Configuration
+data_sources:
+  primary: "yfinance"
+  fallback: "synthetic"
+  symbols:
+    - "GC=F"      # Gold Futures
+    - "XAUUSD=X"  # Gold Spot
+    - "GLD"       # Gold ETF
+  
+  # Update intervals (seconds)
+  real_time_interval: 30
+  historical_interval: 3600
+  
+  # API Keys (set via environment variables)
+  alpha_vantage_key: "${ALPHA_VANTAGE_API_KEY}"
+  quandl_key: "${QUANDL_API_KEY}"
+
+# Machine Learning Configuration
+machine_learning:
+  # Model settings
+  target_accuracy: 0.90
+  confidence_threshold: 0.60
+  ensemble_weights: "auto"
+  
+  # Training parameters
+  train_test_split: 0.8
+  validation_split: 0.2
+  cross_validation_folds: 5
+  
+  # Feature engineering
+  feature_count: 129
+  lookback_periods: [5, 10, 20, 50, 100, 200]
+  
+  # Model types
+  models:
+    random_forest:
+      enabled: true
+      n_estimators: 200
+      max_depth: 15
+    
+    xgboost:
+      enabled: true
+      n_estimators: 300
+      learning_rate: 0.1
+      max_depth: 8
+    
+    lightgbm:
+      enabled: true
+      n_estimators: 300
+      learning_rate: 0.1
+      num_leaves: 50
+    
+    ensemble:
+      enabled: true
+      voting: "soft"
+      weights: "performance"
+
+# Database Configuration
+database:
+  # Database settings
+  type: "sqlite"
+  path: "data/database/trading_data.db"
+  backup_path: "data/backups/"
+  
+  # Maintenance settings
+  cleanup_days: 365
+  backup_frequency: "daily"
+  validation_enabled: true
+  
+  # Performance settings
+  connection_pool_size: 10
+  query_timeout: 30
+
+# GUI Configuration
+gui:
+  # Theme settings
+  theme: "professional_dark"
+  font_family: "Segoe UI"
+  font_sizes:
+    small: 10
+    medium: 12
+    large: 14
+    title: 16
+  
+  # Layout settings
+  window_size: [1600, 1000]
+  min_window_size: [1200, 800]
+  split_ratio: 0.5
+  
+  # Update settings
+  auto_refresh: true
+  refresh_interval: 30
+  chart_timeframe: "1h"
+  
+  # Colors (hex values)
+  colors:
+    background: "#1e1e1e"
+    surface: "#2d2d2d"
+    primary: "#0078d4"
+    secondary: "#6cb4ee"
+    success: "#107c10"
+    warning: "#ff8c00"
+    error: "#d13438"
+    text_primary: "#ffffff"
+    text_secondary: "#b3b3b3"
+
+# Risk Management Configuration
+risk_management:
+  # Position sizing
+  default_position_size: 1.0
+  max_position_size: 10.0
+  risk_per_trade: 0.02  # 2% of account
+  
+  # Stop loss and take profit
+  default_stop_loss_pct: 0.02  # 2%
+  default_take_profit_pct: 0.04  # 4%
+  trailing_stop_enabled: true
+  
+  # Risk limits
+  max_daily_loss: 0.05  # 5%
+  max_drawdown: 0.20    # 20%
+  max_correlation: 0.70  # 70%
+
+# Technical Analysis Configuration
+technical_analysis:
+  # Indicators to calculate
+  indicators:
+    moving_averages: [5, 10, 20, 50, 100, 200]
+    rsi_periods: [14, 21]
+    macd_settings: [12, 26, 9]
+    bollinger_bands: [20, 2]
+    atr_periods: [14, 20]
+  
+  # Pattern recognition
+  patterns:
+    candlestick_patterns: true
+    chart_patterns: true
+    support_resistance: true
+    fibonacci_levels: true
+
+# Fundamental Analysis Configuration
+fundamental_analysis:
+  # Economic indicators
+  indicators:
+    - "DXY"           # US Dollar Index
+    - "TNX"           # 10-Year Treasury
+    - "VIX"           # Volatility Index
+    - "USDEUR=X"      # USD/EUR
+  
+  # News sources
+  news_sources:
+    - "reuters"
+    - "bloomberg"
+    - "marketwatch"
+  
+  # Sentiment analysis
+  sentiment:
+    enabled: true
+    sources: ["twitter", "reddit", "news"]
+    update_frequency: 3600  # 1 hour
+
+# Logging Configuration
+logging:
+  # Log levels: DEBUG, INFO, WARNING, ERROR, CRITICAL
+  level: "INFO"
+  
+  # Log files
+  files:
+    application: "logs/application.log"
+    trading: "logs/trading.log"
+    errors: "logs/errors.log"
+    performance: "logs/performance.log"
+  
+  # Log rotation
+  rotation:
+    max_size: "10MB"
+    backup_count: 5
+    
+  # Log format
+  format: "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+  date_format: "%Y-%m-%d %H:%M:%S"
+
+# Performance Configuration
+performance:
+  # Memory settings
+  max_memory_usage: "4GB"
+  cache_size: 1000
+  
+  # Processing settings
+  multiprocessing: true
+  max_workers: 4
+  
+  # Optimization settings
+  enable_numba: true
+  enable_caching: true
+  
+# Testing Configuration
+testing:
+  # Test data settings
+  test_data_size: 1000
+  synthetic_data: true
+  
+  # Performance benchmarks
+  max_training_time: 1800  # 30 minutes
+  max_prediction_time: 3   # 3 seconds
+  min_accuracy: 0.90       # 90%
+  
+  # Test coverage
+  min_coverage: 0.95       # 95%
+
+# Security Configuration
+security:
+  # API security
+  rate_limiting: true
+  max_requests_per_minute: 60
+  
+  # Data validation
+  input_validation: true
+  sql_injection_protection: true
+  
+  # Encryption
+  encrypt_sensitive_data: true
+  encryption_algorithm: "AES-256"
+
+# Deployment Configuration
+deployment:
+  # Environment
+  environment: "development"  # development, staging, production
+  
+  # Monitoring
+  health_check_interval: 300  # 5 minutes
+  metrics_collection: true
+  
+  # Backup and recovery
+  auto_backup: true
+  backup_retention_days: 30

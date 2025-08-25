@@ -1,0 +1,64 @@
+# Gold Trading AI - Development Dependencies
+# ==========================================
+# Additional dependencies for development, testing, and code quality
+
+# Include production dependencies
+-r requirements-production.txt
+
+# Testing Framework
+pytest>=7.0.0,<8.0.0
+pytest-cov>=4.0.0,<5.0.0
+pytest-mock>=3.8.0,<4.0.0
+pytest-xdist>=2.5.0,<4.0.0
+pytest-benchmark>=4.0.0,<5.0.0
+pytest-asyncio>=0.21.0,<1.0.0
+
+# Code Quality and Formatting
+black>=22.0.0,<24.0.0
+flake8>=5.0.0,<7.0.0
+isort>=5.10.0,<6.0.0
+mypy>=0.991,<2.0.0
+pre-commit>=2.20.0,<4.0.0
+
+# Security and Vulnerability Scanning
+bandit>=1.7.0,<2.0.0
+safety>=2.3.0,<3.0.0
+
+# Documentation
+sphinx>=5.0.0,<8.0.0
+sphinx-rtd-theme>=1.0.0,<2.0.0
+myst-parser>=0.18.0,<3.0.0
+sphinx-autodoc-typehints>=1.19.0,<2.0.0
+
+# Development Tools
+ipython>=8.0.0,<9.0.0
+jupyter>=1.0.0,<2.0.0
+notebook>=6.5.0,<8.0.0
+
+# Performance Profiling
+line-profiler>=4.0.0,<5.0.0
+memory-profiler>=0.60.0,<1.0.0
+py-spy>=0.3.0,<1.0.0
+
+# Additional Visualization (Development)
+plotly>=5.10.0,<6.0.0
+seaborn>=0.11.0,<1.0.0
+bokeh>=2.4.0,<4.0.0
+
+# Web Development (Optional)
+flask>=2.2.0,<3.0.0
+dash>=2.6.0,<3.0.0
+fastapi>=0.85.0,<1.0.0
+uvicorn>=0.20.0,<1.0.0
+
+# Database Tools (Development)
+sqlalchemy>=1.4.0,<3.0.0
+alembic>=1.8.0,<2.0.0
+
+# Build and Packaging
+build>=0.8.0,<1.0.0
+twine>=4.0.0,<5.0.0
+wheel>=0.38.0,<1.0.0
+
+# Environment Management
+python-dotenv>=0.20.0,<2.0.0
